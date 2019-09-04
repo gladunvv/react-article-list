@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 
 class Article extends Component {
-  state = {
-    isOpen: true
-  };
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isOpen: props.defaultOpen
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.defaultOpen !== this.props.defaultOpen) this.setState({
+      isOpen: nextProps.defaultOpen
+    })
+  }
 
   render() {
     const { article } = this.props;
