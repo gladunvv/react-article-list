@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 
-class Article extends Component {
+class Article extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -8,6 +8,10 @@ class Article extends Component {
       isOpen: props.defaultOpen
     }
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.state.isOpen !== nextState.isOpen
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.defaultOpen !== this.props.defaultOpen) this.setState({
